@@ -1,15 +1,20 @@
+set nocompatible	" Use Vim defaults (much better!)
+
+"==========================================
+" 定义常用的变量
+"==========================================
+let g:author = "wangjia"
+let g:email = "89946525@qq.com"
+
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-set nocompatible	" Use Vim defaults (much better!)
 set bs=indent,eol,start		" allow backspacing over everything in insert mode
-set ai			" always set autoindenting on
 "set backup		" keep a backup file
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
 			" than 50 lines of registers
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
+set history=50000		" keep 50 lines of command line history
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
@@ -51,8 +56,6 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-filetype plugin on
-
 if &term=="xterm"
      set t_Co=8
      set t_Sb=[4%dm
@@ -63,23 +66,15 @@ endif
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
 
-set nu
-set cin
-set expandtab
-set ts=4
-set sw=4
-set sts=4
-set tw=100
-set nobk
 
 " install Vundle bundles
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-" ensure ftdetect et al work by including this after the Vundle stuff
-filetype plugin indent on
-
+"==========================================
+" 与文件类型相关的设置
+"==========================================
 "检测文件类型
 filetype on
 "针对不同的文件类型采用不同的缩进格式
@@ -89,6 +84,7 @@ filetype plugin on
 "启动自动补全
 filetype plugin indent on
 
+
 "==========================================
 " Display Settings 展示/排版等界面格式设置
 "==========================================
@@ -97,6 +93,16 @@ filetype plugin indent on
 set scrolloff=7
 " 括号配对情况,跳转并高亮一下匹配的括号
 set showmatch
+set ruler		" show the cursor position all the time
+set nu
+set ai
+set cin
+set expandtab
+set ts=4
+set sw=4
+set sts=4
+set tw=100
+set nobk
 
 "==========================================
 " FileEncode Settings 文件编码,格式
@@ -131,3 +137,19 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+"============================================
+" 新建文件标题
+"============================================
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.sql,*php exec ":call SetTitle()"
+
+func SetTitle()
+    if &filetype == 'sh'
+        call setline(1, "\#! /bin/bash")
+        call append(line("."), "")
+    elseif (&filetype == 'cpp') 
+        source ~/.vim/title/c.vim
+    endif
+endfunc
+
+autocmd BufNewFile * normal G

@@ -6,7 +6,8 @@ call append(line(".")+3, " * @date: ".strftime("%Y/%m/%d %T"))
 call append(line(".")+4, " **/") 
 call append(line(".")+5, "")
 
-if &filetype == 'cpp'
+"如果文件扩展名是h
+if expand("%:e") == 'h'
     call append(line(".")+6, "namespace {")
     call append(line(".")+7, "")
     call append(line(".")+8, "class ")
