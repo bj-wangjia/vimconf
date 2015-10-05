@@ -149,6 +149,8 @@ func SetTitle()
         call append(line("."), "")
     elseif (&filetype == 'cpp') 
         source ~/.vim/title/c.vim
+    elseif (&filetype == 'python')
+        source ~/.vim/title/py.vim
     endif
 endfunc
 

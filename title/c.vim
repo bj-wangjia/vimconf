@@ -1,19 +1,64 @@
 call setline(1, "/**")
+
+let b:line_nu = 0
+call append(line(".") + b:line_nu, "")
+
+let b:line_nu = b:line_nu + 1
 call append(line("."), " * @file: ".expand("%")) 
-call append(line(".")+1, " * @author: ".g:author) 
-call append(line(".")+2, " * @mail: ".g:email) 
-call append(line(".")+3, " * @date: ".strftime("%Y/%m/%d %T")) 
-call append(line(".")+4, " **/") 
-call append(line(".")+5, "")
+
+let b:line_nu = b:line_nu + 1
+call append(line(".")+ b:line_nu, " * @author: ".g:author) 
+
+let b:line_nu = b:line_nu + 1
+call append(line(".")+ b:line_nu, " * @mail: ".g:email) 
+
+let b:line_nu = b:line_nu + 1
+call append(line(".")+ b:line_nu, " * @date: ".strftime("%Y/%m/%d %T")) 
+
+let b:line_nu = b:line_nu + 1
+call append(line(".")+ b:line_nu, " **/") 
+
+let b:line_nu = b:line_nu + 1
+call append(line(".")+ b:line_nu, "")
 
 "如果文件扩展名是h
 if expand("%:e") == 'h'
-    call append(line(".")+6, "namespace {")
-    call append(line(".")+7, "")
-    call append(line(".")+8, "class ")
-    call append(line(".")+9, "{")
-    call append(line(".")+10, "")
-    call append(line(".")+11, "};")
-    call append(line(".")+12, "")
-    call append(line(".")+10, "}")
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "\#ifndef ")
+
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "\#define ")
+
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "namespace {")
+
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "")
+
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "class ")
+
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "{")
+
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "")
+
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "};")
+
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "")
+
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "}")
+
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "")
+
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "")
+
+    let b:line_nu = b:line_nu + 1
+    call append(line(".")+ b:line_nu, "\#endif")
 endif
