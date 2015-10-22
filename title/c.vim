@@ -1,10 +1,7 @@
 call setline(1, "/**")
 
 let b:line_nu = 0
-call append(line(".") + b:line_nu, "")
-
-let b:line_nu = b:line_nu + 1
-call append(line("."), " * @file: ".expand("%")) 
+call append(line(".") + b:line_nu, " * @file: ".expand("%")) 
 
 let b:line_nu = b:line_nu + 1
 call append(line(".")+ b:line_nu, " * @author: ".g:author) 
@@ -62,3 +59,7 @@ if expand("%:e") == 'h'
     let b:line_nu = b:line_nu + 1
     call append(line(".")+ b:line_nu, "\#endif")
 endif
+
+let b:line_nu = b:line_nu + 1
+call append(line(".")+ b:line_nu, "")
+
