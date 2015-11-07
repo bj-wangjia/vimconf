@@ -145,8 +145,7 @@ autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.sql,*php exec ":call SetTitle()"
 
 func SetTitle()
     if &filetype == 'sh'
-        call setline(1, "\#! /bin/bash")
-        call append(line("."), "")
+        source ~/.vim/title/sh.vim
     elseif (&filetype == 'cpp') 
         source ~/.vim/title/c.vim
     elseif (&filetype == 'python')
