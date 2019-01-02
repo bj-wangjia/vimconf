@@ -1,10 +1,10 @@
-let g:user_name = 'brawnwang'
-let g:user_email = 'brawnwang@tencent.com'
+let g:user_name = 'wangjia'
+let g:user_email = 'wangjia@mitegral.com'
 
 set nocompatible
 set encoding=utf8
 set fileencoding=utf-8
-set fileencodings=gbk,utf-8,gbk
+set fileencodings=utf-8,gbk
 
 set nu
 
@@ -39,9 +39,11 @@ filetype plugin indent on
 set tags+=./tags
 set tags+=../tags
 
+" Pathogen
+ execute pathogen#infect()
+
 " ctrlP
 nnoremap <Leader>fu :CtrlPFunky<Cr>
-
 
 " Plugin rainbow
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
@@ -83,5 +85,5 @@ let tagbar_width=25
 
 " color molokai
 colorscheme molokai
-"let g:molokai_original = 1
-"let g:rehash256 = 1
+let g:molokai_original = 1
+let g:rehash256 = 1

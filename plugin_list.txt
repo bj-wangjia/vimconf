@@ -1,0 +1,5 @@
+git@github.com:vim-scripts/a.vim.git
+git@github.com:majutsushi/tagbar.git
+git@github.com:solarnz/thrift.vim.git
+git@github.com:tomasr/molokai.git
+git@github.com:luochen1990/rainbow.git
